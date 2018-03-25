@@ -1,0 +1,35 @@
+categories:
+  - themes
+  - icons
+  - browsers
+  - developer
+  - terminal colors
+themes:
+  - arc: Arc Theme
+    install: arc-theme
+    gsettings: gsettings set org.gnome.desktop.interface gtk-theme "Arc-Darker"
+  - druga: Dwa
+    install: lol
+icons:
+  - papirus: Papirus icon theme
+    install: papirus-icon-theme
+    gsettings: gsettings set org.gnome.desktop.interface icon-theme "Papirus"
+browsers:
+  - chromium: Chromium web browser
+    install: chromium-browser chromium-browser-l10n
+  - epiphany: Epiphany
+    install: epiphany-browser
+applications:
+  - gimp: Gimp
+    install: gimp
+developer:
+  - git: Github
+    install: git
+  - zsh: ZSH
+    install: zsh fonts-powerline
+    sh: oh-my-zsh.sh
+  - build-essential: Essential libraries
+    install: build-essential
+terminal colors:
+  - vscode: VS Code
+    sh: vs-code-color.sh
