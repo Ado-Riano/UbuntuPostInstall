@@ -27,6 +27,7 @@ developer:
     install: git
   - zsh: ZSH
     install: zsh fonts-powerline
+    sh sudo: oh-my-zsh-install.sh
     sh: oh-my-zsh.sh
   - build-essential: Essential libraries
     install: build-essential
