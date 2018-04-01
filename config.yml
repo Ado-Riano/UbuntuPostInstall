@@ -8,8 +8,6 @@ themes:
   - arc: Arc Theme
     install: arc-theme
     gsettings: gsettings set org.gnome.desktop.interface gtk-theme "Arc-Darker"
-  - druga: Dwa
-    install: lol
 icons:
   - papirus: Papirus icon theme
     install: papirus-icon-theme
@@ -33,4 +31,4 @@ developer:
     install: build-essential
 terminal colors:
   - vscode: VS Code
-    sh: vs-code-color.sh
+    sh: GnomeTerminalColors.sh

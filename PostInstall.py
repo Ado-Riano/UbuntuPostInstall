@@ -1,6 +1,7 @@
 import gi
 import yaml
 import subprocess
+import os
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
@@ -65,9 +66,19 @@ class MainWindow(Gtk.ApplicationWindow):
                 listbox.add(row)
 
     def on_button_clicked(self, button):
-        subprocess.run("pkexec apt-get install {}".format(" ".join(Install)), shell=True, check=True)
+        if Install.__len__() > 0:
+            subprocess.run("pkexec apt-get install {} -y".format(" ".join(Install)), shell=True, check=True)
+        
         for x in range(0, Gsettings.__len__()):
             subprocess.run(Gsettings[x], shell=True, check=True)
+        
+        for x in range(0, Shell.__len__()):
+            subprocess.run("./{}".format(Shell[x]), shell=True, check=True)
+        
+        path = os.path.dirname(os.path.realpath(__file__))
+        
+        for x in range(0, ShellSu.__len__()):
+            subprocess.run("pkexec {}/{}".format(path, ShellSu[x]), shell=True, check=True)
         
     def on_toggled(self, button, install, type):
         if button.get_active():
@@ -76,7 +87,7 @@ class MainWindow(Gtk.ApplicationWindow):
         else:
             state = "off"
             remove_value(self, install, type)
-        print("Typ:", type, "  Komenda:", install, "Stan: {}".format(state))
+        #print("Type:", type, "  Command:", install, "State: {}".format(state))
 
 def add_value(self, var, type):
     if type == "install":
@@ -93,7 +104,7 @@ def remove_value(self, var, type):
         Install.remove(var)
     if type == "sh":
         Shell.remove(var)
-    if type == "sh":
+    if type == "sh sudo":
         ShellSu.remove(var)
     if type == "gsettings":
         Gsettings.remove(var)
